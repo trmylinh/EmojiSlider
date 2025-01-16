@@ -4,7 +4,7 @@ import android.view.ViewGroup.MarginLayoutParams
 import com.bernaferrari.emojislidersample.R
 import com.bernaferrari.emojislidersample.extensions.pxToDp
 import com.xwray.groupie.kotlinandroidextensions.Item
-import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import kotlinx.android.synthetic.main.item_colorpicker.*
 
 /**
@@ -23,7 +23,7 @@ class ColorPickerItem(
 
     override fun getLayout(): Int = R.layout.item_colorpicker
 
-    override fun bind(viewHolder: ViewHolder, position: Int) {
+    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
 
         viewHolder.containerView.setOnClickListener {
             // We don't want to allow deselection
@@ -56,7 +56,7 @@ class ColorPickerItem(
         }
     }
 
-    private fun updateContainerMargins(viewHolder: ViewHolder) {
+    private fun updateContainerMargins(viewHolder: GroupieViewHolder) {
         // This is necessary for extra left padding on the first item, so it looks
         // visually identical to other items.
         // Since it is inside a recyclerView, the margin needs to be set at all the items.

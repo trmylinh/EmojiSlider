@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -6,24 +8,27 @@ apply plugin: 'kotlin-kapt'
 androidExtensions {
     experimental = true
 }
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+tasks.withType(KotlinCompile).configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
 android {
-    compileSdkVersion 29
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.bernaferrari.emojislider"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
+
+        signingConfig signingConfigs.debug
     }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 }
@@ -50,9 +55,13 @@ dependencies {
 
 
     // RecyclerView
-    def groupie = "2.3.0"
-    implementation "com.xwray:groupie:$groupie"
-    implementation "com.xwray:groupie-kotlin-android-extensions:$groupie"
+//    def groupie = "2.3.0"
+//    implementation "com.xwray:groupie:$groupie"
+//    implementation "com.xwray:groupie-kotlin-android-extensions:$groupie"
+    implementation "com.github.lisawray.groupie:groupie:2.8.0"
+    implementation "com.github.lisawray.groupie:groupie-databinding:2.8.0"
+    implementation "com.github.lisawray.groupie:groupie-viewbinding:2.8.0"
+    implementation "com.github.lisawray.groupie:groupie-kotlin-android-extensions:2.8.0"
 
 
     // UI

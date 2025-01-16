@@ -21,7 +21,7 @@ import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import kotlinx.android.synthetic.main.control_bar.*
 import kotlinx.android.synthetic.main.control_bar_colors.*
 import kotlinx.android.synthetic.main.control_bar_emoji.*
@@ -87,7 +87,7 @@ class Customize : Fragment() {
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            this.adapter = GroupAdapter<ViewHolder>()
+            this.adapter = GroupAdapter<GroupieViewHolder>()
                 .apply { add(Section(colorSelectorList)) }
             this.itemAnimator = this.itemAnimator.apply {
                 // From https://stackoverflow.com/a/33302517/4418073
@@ -107,7 +107,7 @@ class Customize : Fragment() {
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            this.adapter = GroupAdapter<ViewHolder>()
+            this.adapter = GroupAdapter<GroupieViewHolder>()
                 .apply { add(Section(emoijSelectorList)) }
             this.itemAnimator = this.itemAnimator.apply {
                 // From https://stackoverflow.com/a/33302517/4418073
